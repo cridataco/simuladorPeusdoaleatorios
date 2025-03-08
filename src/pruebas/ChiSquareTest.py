@@ -36,6 +36,6 @@ def chi_square_test(numbers, bins=10, alpha=0.05):
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    random_numbers = np.random.uniform(0, 1, 1000)  # Generar 1000 números aleatorios
+    random_numbers = np.random.uniform(0, 1, 1000) 
     result = chi_square_test(random_numbers, bins=10, alpha=0.05)
     print(result)
