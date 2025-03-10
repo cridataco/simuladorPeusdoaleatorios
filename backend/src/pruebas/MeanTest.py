@@ -19,6 +19,9 @@ def prueba_media(numeros, alfa=0.05):
     else:
         print("No se rechaza H0: los números pueden ser uniformes.")
 
-# Ejemplo
-numeros = [ 0.7087, 0.4272, 0.6408, 0.2718, 0, 0.3786, 0.8155, 0.2427, 0.5049, 0.9612, 0.7184, 0.5922, 0.4466, 0.9709, 0.8835, 0.3981, 0.1456, 0.8544, 0.9029, 0.7282, 0.7573, 0.2524, 0.6699, 0.767]
-prueba_media(numeros)
+if __name__ == "__main__":
+    # Ejemplo de uso (se ejecuta solo si el módulo se corre directamente)
+    numeros = [0.7087, 0.4272, 0.6408, 0.2718, 0, 0.3786, 0.8155, 0.2427, 0.5049, 0.9612,
+               0.7184, 0.5922, 0.4466, 0.9709, 0.8835, 0.3981, 0.1456, 0.8544, 0.9029, 0.7282,
+               0.7573, 0.2524, 0.6699, 0.767]
+    prueba_media(numeros);
