@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Resultados de las Pruebas Estadísticas</h2>
+
+<h4>Chi-cuadrado</h4>
+<ul>
+  <li>Estadístico: {{ chi_result.chi_square_statistic }}</li>
+  <li>Valor crítico: {{ chi_result.critical_value }}</li>
+  <li>p-valor: {{ chi_result.p_value }}</li>
+  <li>Grados de libertad: {{ chi_result.degrees_of_freedom }}</li>
+  <li>Rechazo H₀: {{ "Sí" if chi_result.reject_null else "No" }}</li>
+</ul>
+
+<h4>Kolmogorov-Smirnov</h4>
+<pre>{{ ks_text }}</pre>
+
+<h4>Prueba de Media</h4>
+<pre>{{ media_result }}</pre>
+
+<h4>Varianza</h4>
+<p>{{ varianza }}</p>
+
+<a href="{{ url_for('index') }}" class="btn btn-primary">Volver</a>
+{% endblock %}

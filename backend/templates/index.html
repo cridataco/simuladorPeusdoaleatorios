@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Generador de Números Pseudoaleatorios</h1>
+<form method="POST" action="{{ url_for('index') }}">
+  <div class="mb-3">
+    <label for="metodo" class="form-label">Seleccione el método</label>
+    <select class="form-select" id="metodo" name="metodo" required onchange="mostrarParametros(this.value)">
+      <option value="">-- Elija un método --</option>
+      <option value="lineal">Congruencia Lineal</option>
+      <option value="mixta">Congruencia Mixta</option>
+      <option value="cuadrados">Cuadrados Medios</option>
+    </select>
+  </div>
+  
+  <!-- Sección para Congruencia Lineal -->
+  <div id="param_lineal" style="display:none;">
+    <h5>Parámetros para Congruencia Lineal</h5>
+    <div class="mb-3">
+      <label class="form-label">Multiplicador (a)</label>
+      <input type="number" step="any" class="form-control" name="a" value="5" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Semilla (X₀)</label>
+      <input type="number" step="any" class="form-control" name="xn" value="7" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Constante aditiva (c)</label>
+      <input type="number" step="any" class="form-control" name="c" value="3" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Módulo (m)</label>
+      <input type="number" step="any" class="form-control" name="mod" value="16" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Número de iteraciones</label>
+      <input type="number" class="form-control" name="iterations" value="20" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Valor mínimo</label>
+      <input type="number" step="any" class="form-control" name="min_val" value="4" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Valor máximo</label>
+      <input type="number" step="any" class="form-control" name="max_val" value="19" required>
+    </div>
+  </div>
+  
+  <!-- Sección para Congruencia Mixta -->
+  <div id="param_mixta" style="display:none;">
+    <h5>Parámetros para Congruencia Mixta</h5>
+    <div class="mb-3">
+      <label class="form-label">Multiplicador (a)</label>
+      <input type="number" step="any" class="form-control" name="a" value="7" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Constante aditiva (c)</label>
+      <input type="number" step="any" class="form-control" name="c" value="5" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Semilla (X₀)</label>
+      <input type="number" step="any" class="form-control" name="xn" value="3" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Módulo (m)</label>
+      <input type="number" step="any" class="form-control" name="mod" value="16" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Número de iteraciones</label>
+      <input type="number" class="form-control" name="iterations" value="20" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Valor mínimo</label>
+      <input type="number" step="any" class="form-control" name="min_val" value="4" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Valor máximo</label>
+      <input type="number" step="any" class="form-control" name="max_val" value="19" required>
+    </div>
+  </div>
+  
+  <!-- Sección para Cuadrados Medios -->
+  <div id="param_cuadrados" style="display:none;">
+    <h5>Parámetros para Cuadrados Medios</h5>
+    <div class="mb-3">
+      <label class="form-label">Semilla</label>
+      <input type="number" class="form-control" name="semilla" value="2573" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Número de iteraciones (n)</label>
+      <input type="number" class="form-control" name="n" value="10" required>
+    </div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Generar Números</button>
+</form>
+
+<hr>
+
+<h3>Ejecutar Pruebas Estadísticas</h3>
+<p>Si ya tienes una lista de números (separados por coma) en el intervalo [0,1], ingrésalos a continuación:</p>
+<form method="POST" action="{{ url_for('pruebas') }}">
+  <div class="mb-3">
+    <label class="form-label">Números (separados por coma)</label>
+    <input type="text" class="form-control" name="numeros" placeholder="0.1,0.5,0.7,...">
+  </div>
+  <button type="submit" class="btn btn-secondary">Ejecutar Pruebas</button>
+</form>
+
+<script>
+  function mostrarParametros(metodo) {
+    document.getElementById("param_lineal").style.display = (metodo === "lineal") ? "block" : "none";
+    document.getElementById("param_mixta").style.display = (metodo === "mixta") ? "block" : "none";
+    document.getElementById("param_cuadrados").style.display = (metodo === "cuadrados") ? "block" : "none";
+  }
+</script>
+{% endblock %}

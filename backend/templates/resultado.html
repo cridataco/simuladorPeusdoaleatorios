@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ metodo }}</h2>
+<pre>{{ result_text }}</pre>
+{% if numbers %}
+  <h5>Números normalizados (para pruebas):</h5>
+  <p>{{ numbers }}</p>
+{% endif %}
+<a href="{{ url_for('index') }}" class="btn btn-primary">Volver</a>
+{% endblock %}
